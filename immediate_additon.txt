@@ -1,0 +1,12 @@
+; immediate addressing addition
+org 100h
+MOV AX,12F2h
+MOV BX,122Ah
+MOV CL,00h
+ADD AX,BX
+MOV DX,AX
+JNC jump
+INC CL
+jump:
+HLT
+Ret
