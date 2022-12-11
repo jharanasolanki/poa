@@ -1,15 +1,18 @@
-data segment
-    f db 05h
-ends
+DATA SEGMENT
+    NUM DB 4H
+DATA ENDS
 
-
-code segment
-    start:
-    mov ax,data
-    mov ds,ax
+CODE SEGMENT
+    START:
     
-    mov ax, 0001h
-    mul f
-    dec f
-    jnz up
-ends
+    MOV AX,DATA
+    MOV DS,AX
+    LEA SI,NUM
+    MOV AX,01H
+    L1:
+    MUL NUM
+    DEC NUM
+    JNZ L1 
+    
+CODE ENDS
+END START

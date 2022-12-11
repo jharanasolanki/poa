@@ -1,28 +1,29 @@
 DATA SEGMENT
-ARR DB 5, 3, 7, 1, 9, 2, 6, 8, 4
+    N1 DB 34H, 26H, 99H
 DATA ENDS
 
-CODE SEGMENT 
-START:
-
-MOV AX, DATA
-MOV DS, AX
-
-LEA SI, ARR
-
-MOV CL,10
-
-MOV AL, [SI]
-L1:
-MOV BL,[SI]
-CMP AL,BL
-JNC L2
-MOV AL,BL
-L2:
-INC SI
-DEC CL
-
-JNZ L1
-
+CODE SEGMENT
+    START:
+    
+    MOV AX,DATA
+    MOV DS,AX
+    
+    LEA SI,N1
+    MOV CL,03H
+    
+    MOV AL,[SI]
+    L1:
+    
+    MOV BL,[SI]
+    CMP AL,BL
+    JC L2
+    MOV AL,BL
+    
+    L2:
+    INC SI
+    DEC CL
+    JNZ L1
+    
+    
 CODE ENDS
 END START

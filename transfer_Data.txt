@@ -1,29 +1,36 @@
-;transfer data from one segment to another
-
 DATA SEGMENT
-SEG1 DB 1H, 2H, 3H
-ENDS 
+    N1 DB 45H, 32H, 36H
+DATA ENDS
 
-EXTRA SEGMENT 
-SEG2 DB ?
-ENDS
+EXTRA SEGMENT
+    N2 DB ?
+EXTRA ENDS
+
 
 CODE SEGMENT
-START :
-; SET SEGMENT REGISTERS
-MOV AX, DATA
-MOV DS, AX
-MOV AX, EXTRA
-MOV ES, AX
-
-LEA SI , SEG1
-LEA DI , SEG2
-MOV CX , 03H
-X: MOV AH, DS: [SI]
-MOV ES:[DI], AH
-INC SI
-INC DI
-DEC CX
-JNZ X INT 3
-ENDS
+    START: 
+    
+    MOV AX,DATA
+    MOV DS,AX
+    
+    MOV AX,EXTRA
+    MOV ES,AX
+    
+    LEA SI, N1
+    LEA DI, N2
+    
+    MOV CL,04H
+    
+    L1:
+    
+    MOV AX,DS:[SI]
+    MOV ES:[DI],AX
+    
+    INC SI
+    INC DI
+    DEC CL
+    
+    JNZ L1
+    
+CODE ENDS
 END START

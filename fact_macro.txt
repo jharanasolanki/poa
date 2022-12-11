@@ -3,6 +3,7 @@ fact macro f
     mul f
     dec f
     jnz up
+    mov ax,f
 endm
 
 data segment
@@ -15,6 +16,7 @@ code segment
     mov ax,data
     mov ds,ax
     
+    lea si,num
     mov ax, 0001h
-    fact num
+    fact [si]
 ends

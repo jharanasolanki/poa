@@ -1,0 +1,25 @@
+SINTEREST MACRO 
+    MOV AX,01H
+    MUL P
+    MUL N
+    MUL R
+    DIV T
+ENDM     
+
+DATA SEGMENT
+    P DW 300
+    N DW 2
+    R DW 4
+    T DW 64
+DATA ENDS 
+
+CODE SEGMENT
+    START:
+    
+    MOV AX,DATA
+    MOV DS,AX
+    
+    SINTEREST 
+    
+CODE ENDS
+END START
