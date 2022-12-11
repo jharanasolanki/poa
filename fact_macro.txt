@@ -1,5 +1,12 @@
+fact macro f
+    up:
+    mul f
+    dec f
+    jnz up
+endm
+
 data segment
-    f db 05h
+    num db 05h
 ends
 
 
@@ -9,7 +16,5 @@ code segment
     mov ds,ax
     
     mov ax, 0001h
-    mul f
-    dec f
-    jnz up
+    fact num
 ends
